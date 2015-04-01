@@ -53,5 +53,8 @@ def logout(request):
     return HttpResponseRedirect("/forum")
 
 def forum(request):
+    if request.method == 'POST':
+        message = Message(text = request.POST.get('messagetext', ''))
+        message.save()
     messages = Message.objects.all()
     return render(request, 'forum.html', {'messages': messages})

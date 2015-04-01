@@ -19,6 +19,14 @@
     </p>
 
     {% if user.is_authenticated %}
+        <form action = "" method = "post">
+            <label for = "text"> Message text: </label>
+            <br>
+            <textarea name = "messagetext" value = "" id = "messagetext">
+            </textarea>
+            <br>
+            <input type = "submit" value = "send" />
+        </form>
         <a href="/logout">logout</a>.
     {% else %}
         <a href="/login">login</a>.
