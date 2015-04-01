@@ -1,27 +1,26 @@
-<html>
-    <body>
-        {% if user.is_authenticated %}
-            <p>You are logged in as {{ user }}.</p>
-        {% else %}
-            <p>You are anonymous.</p>
-        {% endif %}
-
-        {% for message in messages %}
+{% extends "base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <p>You are logged in as {{ user }}.</p>
+    {% else %}
+        <p>You are anonymous.</p>
+    {% endif %}
+    
+    {% for message in messages %}
         <ul>
             <li>
                 {{ message.text|upper }}
             </li>
         </ul>
-        {% endfor %}
+    {% endfor %}
 
-        <p>
-            This is a forum template.
-        </p>
+    <p>
+        This is a forum template.
+    </p>
 
-        {% if user.is_authenticated %}
-            <a href="/logout">logout</a>.
-        {% else %}
-            <a href="/login">login</a>.
-        {% endif %}
-    </body>
-</html>
+    {% if user.is_authenticated %}
+        <a href="/logout">logout</a>.
+    {% else %}
+        <a href="/login">login</a>.
+    {% endif %}
+{% endblock %}
