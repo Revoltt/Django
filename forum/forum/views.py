@@ -8,6 +8,12 @@ from django.contrib import auth
 
 from main.models import Message
 
+def home(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/forum")
+    else:
+        return HttpResponseRedirect("/login")
+
 def register(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
